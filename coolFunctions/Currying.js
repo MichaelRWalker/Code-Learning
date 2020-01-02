@@ -11,8 +11,8 @@ let curryFunc =
     base => 
         meat =>
             spice =>
-                vegatables =>
-                    curryMaker(base,meat,vegatables,spice);
+                vegetables =>
+                    curryMaker(base,meat,vegetables,spice);
 
 
 let myCurry = curryFunc('green');
