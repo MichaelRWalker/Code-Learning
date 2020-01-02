@@ -1,0 +1,14 @@
+    * Benefits of unit testing *
+* Unit tests prove that your code actually works
+* You get a low-level regression-test suite
+* You can improve the design without breaking it
+* It's more fun to code with them than without
+* They demonstrate concrete progress
+* Unit tests are a form of sample code
+* It forces you to plan before you code
+* It reduces the cost of bugs
+* It's even better than code inspections
+* Unit tests make better designs
+
+
+Boundary Value Analysis
