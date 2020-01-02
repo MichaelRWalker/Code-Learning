@@ -24,21 +24,37 @@ const makeUniqueId = () =>{
 
 
 const counter = (name,observer) =>{
+    let bool = false
     const div = document.createElement('div');
         const score = document.createElement('div');
+        const scoreboard = new Scoreboard();
+        scoreboard.attachToElement(score);
+        scoreboards.appendChild(div);
         score.id = makeUniqueId();
         const remove = document.createElement('button');
         remove.innerText = 'remove';
         remove.addEventListener('click',()=>{
             div.remove();
-            observer.unsubscribe(score);
+            observer.unsubscribe(scoreboard);
+        });
+        const unsubscribe = document.createElement('button');
+        unsubscribe.innerText = 'unsubscribe';
+        unsubscribe.addEventListener('click',()=>{
+            if(!bool){
+                bool=!bool;
+                unsubscribe.innerText = 'subscribe';
+            observer.unsubscribe(scoreboard);
+            }else{
+                bool=!bool
+                unsubscribe.innerText = 'unsubscribe';
+            observer.subscribe(scoreboard)
+            }
         });
         score.innerText = 0;
         div.appendChild(score);
         div.appendChild(remove);
-            const scoreboard = new Scoreboard();
-            scoreboard.attachToElement(score);
-            scoreboards.appendChild(div);
+        div.appendChild(unsubscribe);
+
             return scoreboard
 };
 
@@ -74,15 +90,12 @@ let Observer = class{
         this.count++
     }
     unsubscribe(el){
-        this.subscribers.forEach(sub=>console.log(sub ,el));
-        this.subscribers = this.subscribers.filter(sub=> sub.id!==el.id);
-        console.log(this.subscribers);
-        console.log(el.id);
+        this.subscribers = this.subscribers.filter(sub=> sub!==el);
         this.count--
     }
     dispatch(){
         this.history[this.turn]=this.state;
-        docHistory.appendChild(addLi(JSON.stringify(this.history[this.turn])));
+        docHistory.appendChild(addLi(JSON.stringify([this.history[this.turn],this.subscribers.length])));
         this.subscribers.forEach(el=>el.update(this.state.score)); //update each member with the proper data
         this.turn ++
     }
@@ -122,11 +135,11 @@ scoreKeeper.subscribe(game);
 
 const inc = document.getElementById('button');
 inc.addEventListener('click',()=>state.increment(scoreKeeper));
-inc.innerText = '+';
+inc.innerText = 'Increment Score';
 
 const button = document.getElementById('btn');
 button.addEventListener('click',()=>state.decrement(scoreKeeper));
-button.innerText = '-';
+button.innerText = 'Decrement Score';
 
 addButton.addEventListener('click',()=>scoreKeeper.subscribe(counter('test',scoreKeeper)));
 
