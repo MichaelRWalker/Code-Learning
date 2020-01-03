@@ -48,3 +48,12 @@ a:hover {
 /* h1 + ul + p {} */
 
 /* You can combine multiple select types in your code to*/
+body h1 + p .special{
+    color:yellow;
+    background-color: black;
+    padding: 5px;
+}
+/*
+This will style any element with a class of special, which is inside of a <p>,
+Which come just after an <h1> , which is inside a body
+*/
