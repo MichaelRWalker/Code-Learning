@@ -1,8 +1,0 @@
-h1 , p {
-    background-color: #dde0e3;
-}
-em ,strong {
-    background-color: #b2d6ff;
-    /* Can make inline elements BLOCK elements with display:block */
-    display: inline;
-} 
