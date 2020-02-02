@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .btnContainer{
+            display:flex;
+            width:100vw;
+            flex: 1 ;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+        }
+        .btnContainer>button{
+            width:21vw;
+            font-size: 3ch;
+        }
+        .btnContainer>.btnOff{
+            width:48vw;
+        }
+        .btnContainer>.btnDeactivate{
+            width:48vw;
+        }
+        .btnContainer>div{
+            width:6vw;
+            margin-top: 10%;
+        }
+        div.output{
+            background-color: black;
+        }
+    .output.active.open{
+        color:greenyellow;
+        background-color:greenyellow;
+    }
+    .output.active.closed{
+        color:red;
+        background-color:red;
+    }
+    .output.active{
+        color:rgb(214, 185, 18);
+        background-color:rgb(214, 185, 18);
+    }
+    .output.inactive{
+        color:black;
+        background-color:black;
+    }
+    .show{
+        visibility:visible;
+    }
+    .hide{
+        visibility: hidden;
+    }
+    </style>
+    <div class="btnContainer">
+    <button class='btn'id='btn1'>On 1</button>
+    <button class='btn'id='btn2'>On 2</button>
+    <button class='btn'id='btn3'>On 3</button>
+    <button class='btn'id='btn4'>On 4</button>
+    <button class='btn'id='btn1'>Active 1</button>
+    <button class='btn'id='btn2'>Active 2</button>
+    <button class='btn'id='btn3'>Active 3</button>
+    <button class='btn'id='btn4'>Active 4</button>
+    <button class='btnOff'id='off'>Master Off Switch</button>
+    <button class='btnDeactivate'id='deactivate'>Master Deactivate Switch</button>
+    <div class='output' id='div1'>div1</div>
+    <div class='output' id='div2'>div2</div>
+    <div class='output' id='div3'>div3</div>
+    <div class='output' id='div4'>div4</div> 
+    </div>
+
+
+    <script src="main.js"></script>  
+</body>
+</html>
