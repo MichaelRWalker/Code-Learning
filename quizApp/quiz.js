@@ -1,29 +1,44 @@
-export default class Quiz{
+export default class Quiz {
     constructor(questions){
         this.questions = questions;
         this.finishedQuestions = {};
         this.currentAnswer = '';
-        this.index = 0; 
+        this.index = 0
     }
     onSubmit=()=>{
-        let question = this.questions[this.index];
-        let answer = this.currentAnswer;
-        let complete = {question,answer};
-        this.finishedQuestions[this.index]=complete;
-        this.currentAnswer = ''
-
-        console.log('on submit')
+    let complete = {
+        question :this.questions[this.index],
+        answer:this.currentAnswer
+    };
+    this.finishedQuestions[this.index] = complete;
+    this.currentAnswer = ''
+    this.index++
+    if(!this.finished()){
+    this.nextQuestion()
+    }else{
+        this.output()
     }
-    nextQuestion(questionField,answerField){
-        return ()=>{
-            console.log('next question')
-        questionField.innerText =this.questions[this.index];
-        answerField.value = '';
-        this.index++;
-        }
+    }
+    init(){
+        this.nextQuestion();
     }
     updateAnswer=(e)=>{
-        console.log(e)
-        this.currentAnswer = e.target.value;
+        this.currentAnswer = e.target.value
     }
-}
+    nextQuestion(){
+        document.querySelector('.question').innerText = this.questions[this.index];
+        document.querySelector('#answer').value = '';
+    }
+    output(){
+    let output = JSON.stringify(this.finishedQuestions);
+    let answerArea = document.querySelector('.answer');
+    answerArea.value = output;
+    answerArea.select();
+    document.execCommand('copy');
+    }
+    finished(){
+
+        return this.index >= this.questions.length;
+    }
+
+};

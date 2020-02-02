@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+
+        }
+    .container{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width:35vw;
+        height:35vh;
+        background-color: #515151;
+    }
+    .question{
+            color:#effeff;
+    }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="question">1) Placeholder Question</div>
         <textarea 
         name="Answer" 
-        class="answer" 
+        id="answer" 
         cols="30" 
-        rows="10"
+        rows="10" 
         placeholder="Please Write Answer Here"></textarea>
-        <button class="onSubmit" id='submit'>Submit</button>
+        <br>
+        <button id='Submit'>Submit</button>
     </div>
-    <script src="main.js" type="module"></script>
+    <script src="main.js" type='module'></script>
 </body>
 </html>
