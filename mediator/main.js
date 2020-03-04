@@ -18,12 +18,12 @@ class Component{
         return [state,!state].map(e=> e ? on : off )
     }
     open(state){
-        let states = this.parse(state,['open','closed'])
+        let states = this.parse(state,['open','closed']);
         this.toggle(...states);
         return state
     };
     activate(state){
-        let states = this.parse(state,['active','inactive'])
+        let states = this.parse(state,['active','inactive']);
         this.toggle(...states);
         return state
     };
@@ -106,7 +106,7 @@ let mediator = new Mediator();
 const [a,b,c,d,e,f,g,h] = _btn;
 [a,b,c,d].forEach((btn,i)=>btn.addEventListener('click',mediator.registerListener('open',colors[i])));
 [e,f,g,h].forEach((btn,i)=>btn.addEventListener('click',mediator.registerListener('active',colors[i])));
-let buttonsToHide = [ {ele:d,id:'on4'},{ele:h,id:'active4'},{ele:c,id:'on3'},{ele:g,id:'active3'}]
+let buttonsToHide = [ {ele:d,id:'on4'},{ele:h,id:'active4'},{ele:c,id:'on3'},{ele:g,id:'active3'}];
 mediator.registerComponents(buttonsToHide);
 
 _divs.forEach((div,i)=>{
